@@ -331,4 +331,21 @@ function fixVideosOnMobile() {
 
 window.addEventListener("resize", fixVideosOnMobile);
 fixVideosOnMobile();
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const portraitVideo = document.getElementById('video-portrait');
+  const landscapeVideo = document.getElementById('video-landscape');
+
+  function playVideos() {
+    portraitVideo.play().catch(() => {});
+    landscapeVideo.play().catch(() => {});
+  }
+
+  // محاولة التشغيل تلقائيًا
+  playVideos();
+
+  // إذا منع المتصفح التشغيل التلقائي، يشغل عند أول نقرة
+  document.addEventListener('click', () => playVideos(), { once: true });
+});
+
 });
